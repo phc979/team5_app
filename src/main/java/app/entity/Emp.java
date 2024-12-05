@@ -2,6 +2,7 @@ package app.entity;
 
 import java.time.LocalDate;
 
+import app.dto.EmpDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -55,4 +56,18 @@ public class Emp {
 		this.comm = comm;
 		this.dept = dept;
 	}
+	
+    public EmpDto toDto() {
+        return EmpDto.builder()
+                .empno(empno)
+                .ename(ename)
+                .job(job)
+                .mgr(mgr)
+                .hiredate(hiredate)
+                .sal(sal)
+                .comm(comm)
+                .deptno(dept != null ? dept.getDeptno() : null) 
+                .build();
+    }
+	
 }
